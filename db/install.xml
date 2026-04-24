@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="auth/wecom/db" VERSION="20260422" COMMENT="XMLDB file for auth_wecom"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="auth_wecom_map" COMMENT="Mapping between Moodle users and WeCom users">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="Moodle user ID"/>
+        <FIELD NAME="wecom_userid" TYPE="char" LENGTH="100" NOTNULL="true" SEQUENCE="false" COMMENT="WeCom user ID"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        <KEY NAME="userid" TYPE="unique" FIELDS="userid" COMMENT="Each Moodle user can only have one WeCom binding"/>
+        <KEY NAME="wecom_userid" TYPE="unique" FIELDS="wecom_userid" COMMENT="Each WeCom ID can only be bound to one Moodle user"/>
+      </KEYS>
+    </TABLE>
+  </TABLES>
+</XMLDB>
